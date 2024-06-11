@@ -1,0 +1,38 @@
+Table Pets {
+  id int pk
+  name varchar
+  type varchar
+  ownerId int
+}
+
+Table Items {
+  id int pk
+  name varchar
+}
+
+Table Activities {
+  id int pk
+  name varchar
+}
+
+Table Owners {
+  id int pk
+  name varchar
+}
+
+Table ActivityLog {
+  id int pk
+  petId int
+  activityId int
+  itemId int
+  date_created date
+}
+
+
+Ref: "Items"."id" < "ActivityLog"."itemId"
+
+Ref: "Activities"."id" < "ActivityLog"."activityId"
+
+Ref: "Pets"."id" < "ActivityLog"."petId"
+
+Ref: "Owners"."id" < "Pets"."ownerId"
